@@ -1,0 +1,23 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+<h3>@TestInt</h3>
+<button @onclick="@(() => TestInt++)">test</button>
+<FormBase>
+    <Body>
+        <IntField Label="Test Integer" @bind-Value="@TestInt"></IntField>
+    </Body>
+</FormBase>
+
+@*<EditForm>
+    <InputNumber></InputNumber>
+</EditForm>*@
+@code {
+    [CascadingParameter]
+    int TestInt { get; set; }
+
+    protected override void OnInitialized()
+    {
+        TestInt = 10;
+    }
+} 
