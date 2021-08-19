@@ -1,0 +1,49 @@
+﻿@typeparam T
+@using System.Reflection;
+@using StockHouse.Helpers;
+
+<h3>@TableName</h3>
+
+<table>
+    <thead>
+        <tr>
+            @foreach(var header in ColumnNames)
+            {
+                <th>@header</th>
+            }
+        </tr>
+    </thead>
+</table>
+
+@code {
+    [Parameter]
+    public string TableName { get; set; }
+    [Parameter]
+    public List<T> Data { get; set; }
+    [Parameter]
+    public T DataType { get; set; }
+
+    private List<string> ColumnNames = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        FieldInfo[] fieldinfo = typeof(T).GetFields();
+        foreach (var field in fieldinfo)
+        {
+            object[] hTMLAttributes = field.GetCustomAttributes(typeof(DisplayOnTable), false);
+
+            foreach (DisplayOnTable attribute in hTMLAttributes)
+            {
+                if (attribute.UseFieldName)
+                {
+                    ColumnNames.Add(field.Name);
+                }
+                else
+                {
+                    ColumnNames.Add(attribute.DisplayName);
+                }
+            }
+        }
+
+    }
+}

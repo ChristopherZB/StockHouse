@@ -11,7 +11,11 @@
     <StringField Label="String Test 1" @bind-Value="@TestString1" />
 </FormBase>
 
+<Table TableName="Test Table" T="TestObject" Data="Test" />
+
 @code {
+    List<TestObject> Test = new List<TestObject>();
+
     int TestInt { get; set; }
     int TestInt1 { get; set; }
     int TestInt2 { get; set; }
@@ -24,5 +28,10 @@
         TestInt = 10;
         TestInt1 = 1;
         TestInt2 = 100;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Test.Add(new TestObject { AnotherTest = $"Is Even: {i % 2 == 0}", TestInt = i, TestName = $"i = {i}, 2i = {2 * i}" });
+        }
     }
 } 

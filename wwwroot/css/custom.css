@@ -1,12 +1,11 @@
 ﻿.formbase {
-    border: 5px solid black;
+    width: 50%;
     padding: 0px 10px 0px 15px;
 }
 
 .inputfield {
-    border-top: 1px solid gray;
-    height: 42px;
-    padding-top: 10px;
+    border-bottom: 1px solid gray;
+    padding: 10px 0 5px 0;
 }
 
 .inputfield-label {
