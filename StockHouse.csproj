@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>StockHouse</RootNamespace>
+    <AssemblyName>StockHouse</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

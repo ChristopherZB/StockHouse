@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PageTemplates.Templates.FormChildren
+namespace StockHouse.Templates.FormChildren
 {
     public class FieldClass<TValue> : ComponentBase
     {
