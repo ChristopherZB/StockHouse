@@ -4,15 +4,27 @@
 
 <h3>@TableName</h3>
 
-<table>
+<table class="table">
     <thead>
         <tr>
-            @foreach(var header in ColumnNames)
+            @foreach (var header in ColumnNames)
             {
                 <th>@header</th>
             }
         </tr>
     </thead>
+    <tbody>
+        @foreach (var row in Data)
+        {
+            <tr>
+                @foreach (var header in PropertyNames)
+                {
+                    <td>@(typeof(T).GetProperty(header).GetMethod.Invoke(row, null))</td>
+                }
+
+            </tr>
+        }
+    </tbody>
 </table>
 
 @code {
@@ -24,16 +36,20 @@
     public T DataType { get; set; }
 
     private List<string> ColumnNames = new List<string>();
+    private List<string> PropertyNames = new List<string>();
+    private List<List<object>> ColumnData = new List<List<object>>();
 
     protected override void OnInitialized()
     {
-        FieldInfo[] fieldinfo = typeof(T).GetFields();
+        PropertyInfo[] fieldinfo = typeof(T).GetProperties();
+        Console.WriteLine(fieldinfo.Length.ToString());
         foreach (var field in fieldinfo)
         {
             object[] hTMLAttributes = field.GetCustomAttributes(typeof(DisplayOnTable), false);
 
             foreach (DisplayOnTable attribute in hTMLAttributes)
             {
+                PropertyNames.Add(field.Name);
                 if (attribute.UseFieldName)
                 {
                     ColumnNames.Add(field.Name);
@@ -43,6 +59,11 @@
                     ColumnNames.Add(attribute.DisplayName);
                 }
             }
+        }
+
+        foreach (var column in ColumnNames)
+        {
+
         }
 
     }
