@@ -1,0 +1,18 @@
+﻿.formbase {
+    border: 5px solid black;
+    padding: 0px 10px 0px 15px;
+}
+
+.inputfield {
+    border-top: 1px solid gray;
+    height: 42px;
+    padding-top: 10px;
+}
+
+.inputfield-label {
+    width: 150px;
+}
+
+.inputfield-field {
+
+}

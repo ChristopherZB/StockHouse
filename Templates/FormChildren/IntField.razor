@@ -1,7 +1,6 @@
 ﻿@inherits Partials.IntField
 
-<FieldBase> 
-    @Value
-    @Label
-    <input type="number" value="@Value" @onchange="SetValue" />
+<FieldBase>
+    <label class="inputfield-label">@Label</label>
+    <input class="inputfield-field" type="number" value="@Value" @onchange="SetValue" />
 </FieldBase>

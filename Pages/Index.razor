@@ -1,23 +1,28 @@
 ﻿@page "/"
 
 <h1>Hello, world!</h1>
-<h3>@TestInt</h3>
-<button @onclick="@(() => TestInt++)">test</button>
+<h3>@TestInt @TestInt1 @TestInt2 @TestString @TestString1</h3>
+
 <FormBase>
-    <Body>
-        <IntField Label="Test Integer" @bind-Value="@TestInt"></IntField>
-    </Body>
+    <IntField Label="Test Integer" @bind-Value="@TestInt" />
+    <IntField Label="Test Integer 2" @bind-Value="@TestInt1" />
+    <IntField Label="Test Integer 3" @bind-Value="@TestInt2" />
+    <StringField Label="String Test" @bind-Value="@TestString" />
+    <StringField Label="String Test 1" @bind-Value="@TestString1" />
 </FormBase>
 
-@*<EditForm>
-    <InputNumber></InputNumber>
-</EditForm>*@
 @code {
-    [CascadingParameter]
     int TestInt { get; set; }
+    int TestInt1 { get; set; }
+    int TestInt2 { get; set; }
+
+    string TestString { get; set; }
+    string TestString1 { get; set; }
 
     protected override void OnInitialized()
     {
         TestInt = 10;
+        TestInt1 = 1;
+        TestInt2 = 100;
     }
 } 

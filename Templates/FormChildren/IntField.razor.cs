@@ -16,6 +16,5 @@ namespace PageTemplates.Templates.FormChildren.Partials
 
             await SetValue(val);
         }
-
     }
 }
