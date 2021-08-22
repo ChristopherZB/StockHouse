@@ -8,11 +8,8 @@ namespace StockHouse.Templates.FormChildren
 {
     public class FieldClass<TValue> : ComponentBase
     {
-
         [Parameter]
-        public TValue? Value { 
-            get; 
-            set; }
+        public TValue? Value { get; set; }
         [Parameter]
         public string Label { get; set; }
         [Parameter]

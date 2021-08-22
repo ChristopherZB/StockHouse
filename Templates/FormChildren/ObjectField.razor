@@ -1,0 +1,12 @@
+﻿@typeparam T
+
+<h3>ObjectField</h3>
+
+@code {
+    [Parameter]
+    public List<T> Options { get; set; }
+    [Parameter]
+    public T Choice { get; set; }
+    [Parameter]
+    public EventCallback Add { get; set; }
+}
