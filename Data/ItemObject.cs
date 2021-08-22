@@ -11,6 +11,6 @@ namespace StockHouse.Data
 
         public string ItemName { get; set; }//name of item being stored EX: 'chicken tendies'
 
-        public int ItemNumber { get; set; }//serial number or whatever from barcode
+        public float ItemNumber { get; set; }//serial number or whatever from barcode
     }
 }
