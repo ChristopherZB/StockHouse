@@ -1,12 +1,44 @@
 ﻿@typeparam T
+@inherits Partials.ObjectField<T>
 
-<h3>ObjectField</h3>
+<FieldBase>
+    <label>@Label</label>
+    <div class="customselect">
+        <div class="customselect-display form-select" @onclick="ShowHideOptions">
+            @if (Value != null)
+            {
+                <div class="text">@DisplayMethod.Invoke(Value)</div>
+            }
+            else
+            {
+                <div class="text">-----------</div>
+            }
+        </div>
+
+        @if (ShowingOptions)
+        {
+            <div class="customselect-selection">
+                @foreach (var option in Options)
+                {
+                    <div @onclick="() => UpdateSelection(option)"><div class="text">@DisplayMethod.Invoke(option)</div></div>
+                }
+            </div>
+        }
+
+    </div>
+</FieldBase>
+
 
 @code {
-    [Parameter]
-    public List<T> Options { get; set; }
-    [Parameter]
-    public T Choice { get; set; }
-    [Parameter]
-    public EventCallback Add { get; set; }
+    bool ShowingOptions = false;
+    void ShowHideOptions()
+    {
+        ShowingOptions = !ShowingOptions;
+    }
+
+    async Task UpdateSelection(T selected)
+    {
+        ShowingOptions = false;
+        await SetValue(selected);
+    }
 }

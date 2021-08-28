@@ -15,7 +15,8 @@ namespace StockHouse.Helpers
             new ItemObject { ItemID = 2, ItemName = "C", ItemNumber = 333333333333 },
             new ItemObject { ItemID = 3, ItemName = "D", ItemNumber = 444444444444 },
             new ItemObject { ItemID = 4, ItemName = "E", ItemNumber = 555555555555 },
-            new ItemObject { ItemID = 5, ItemName = "F", ItemNumber = 666666666666 }
+            new ItemObject { ItemID = 5, ItemName = "F", ItemNumber = 666666666666 },
+            new ItemObject { ItemID = 6, ItemName = "", ItemNumber = 0 }
         };
 
         public static List<LocationObject> LocationObjects = new List<LocationObject>
@@ -23,7 +24,8 @@ namespace StockHouse.Helpers
             new LocationObject { LocationID = 0, Location = "Chest Freezer" },
             new LocationObject { LocationID = 1, Location = "Fridge" },
             new LocationObject { LocationID = 2, Location = "Fridge Freezer" },
-            new LocationObject { LocationID = 3, Location = "Cabinet" }
+            new LocationObject { LocationID = 3, Location = "Cabinet" },
+            new LocationObject { LocationID = 4, Location = "" }
         };
 
         public static List<NameObject> NameObjects = new List<NameObject>
@@ -32,7 +34,8 @@ namespace StockHouse.Helpers
             new NameObject { NameID = 1, Name = "Kyle" },
             new NameObject { NameID = 2, Name = "Brady" },
             new NameObject { NameID = 3, Name = "Parker" },
-            new NameObject { NameID = 4, Name = "Maeve" }
+            new NameObject { NameID = 4, Name = "Maeve" },
+            new NameObject { NameID = 5, Name = "" }
         };
 
         public static List<StockObject> StockObjects = new List<StockObject>
@@ -48,6 +51,7 @@ namespace StockHouse.Helpers
             new StockObject { StockID = 8, StockName = "Chris", StockItemName = "B", StockLocation = "Chest Freezer", StockQuantity = 8, StockItemNum = "222222222222", StockDateTime = DateTime.Now.AddDays(-1) },
             new StockObject { StockID = 9, StockName = "Chris", StockItemName = "F", StockLocation = "Chest Freezer", StockQuantity = 7, StockItemNum = "666666666666", StockDateTime = DateTime.Now.AddDays(-4) },
             new StockObject { StockID = 10, StockName = "Kyle", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 13, StockItemNum = "333333333333", StockDateTime = DateTime.Now.AddDays(-8) },
+            new StockObject { StockID = 11, StockName = "", StockItemName = "", StockLocation = "", StockQuantity = 0, StockItemNum = "", StockDateTime = DateTime.MinValue }
         };
     }
 }
