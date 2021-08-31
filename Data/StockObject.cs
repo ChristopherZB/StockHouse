@@ -16,7 +16,7 @@ namespace StockHouse.Data
 
 
         
-        public string StockItemNum { get; set; }//retrival from itemNum textfield
+        public float StockItemNum { get; set; }//retrival from itemNum textfield
 
 
         [DisplayOnTable("Item Name")]
