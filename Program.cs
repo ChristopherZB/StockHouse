@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using StockHouse.Database;
 using StockHouse.Helpers;
 using System;
 using System.Collections.Generic;
@@ -20,14 +22,18 @@ namespace StockHouse
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            ConfigureServices(builder.Services);
+            ConfigureServices(builder.Services, builder.Configuration);
 
             await builder.Build().RunAsync();
         }
 
-        private static void ConfigureServices(IServiceCollection services)
+        private static void ConfigureServices(IServiceCollection services, IConfiguration config)
         {
             services.AddTransient<TestingData>();
+            
+            /*services.AddDbContext<MainDbContext>(options =>
+                options.UseMySql(config.GetConnectionString("MainConnection"), ServerVersion.AutoDetect(config.GetConnectionString("MainConnection")))
+            );*/
         }
     }
 }
