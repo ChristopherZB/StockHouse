@@ -14,6 +14,7 @@ namespace StockHouse.Database
         public DbSet<LocationObject> Locations { get; set; }
         public DbSet<NameObject> Names { get; set; }
         public DbSet<StockObject> Stocks { get; set; }
+        public object LocationObject { get; internal set; }
 
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
