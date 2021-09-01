@@ -40,18 +40,18 @@ namespace StockHouse.Helpers
 
         public static List<StockObject> StockObjects = new List<StockObject>
         {
-            new StockObject { StockID = 0, StockName = "Chris", StockItemName = "A", StockLocation = "Fridge", StockQuantity = 3, StockItemNum = "111111111111", StockDateTime = DateTime.Now.AddDays(-4) },
-            new StockObject { StockID = 1, StockName = "Brady", StockItemName = "A", StockLocation = "Fridge", StockQuantity = 2, StockItemNum = "111111111111", StockDateTime = DateTime.Now.AddDays(-2) },
-            new StockObject { StockID = 2, StockName = "Parker", StockItemName = "A", StockLocation = "Fridge", StockQuantity = 10, StockItemNum = "111111111111", StockDateTime = DateTime.Now.AddDays(-1) },
-            new StockObject { StockID = 3, StockName = "Parker", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 40, StockItemNum = "333333333333", StockDateTime = DateTime.Now.AddDays(-7) },
-            new StockObject { StockID = 4, StockName = "Parker", StockItemName = "F", StockLocation = "Fridge Freezer", StockQuantity = 4, StockItemNum = "666666666666", StockDateTime = DateTime.Now.AddDays(-4) },
-            new StockObject { StockID = 5, StockName = "Parker", StockItemName = "B", StockLocation = "Chest Freezer", StockQuantity = 6, StockItemNum = "222222222222", StockDateTime = DateTime.Now.AddDays(-4) },
-            new StockObject { StockID = 6, StockName = "Brady", StockItemName = "D", StockLocation = "Cabinet", StockQuantity = 2, StockItemNum = "444444444444", StockDateTime = DateTime.Now.AddDays(-4) },
-            new StockObject { StockID = 7, StockName = "Chris", StockItemName = "E", StockLocation = "Fridge", StockQuantity = 2, StockItemNum = "555555555555", StockDateTime = DateTime.Now.AddDays(-3) },
-            new StockObject { StockID = 8, StockName = "Chris", StockItemName = "B", StockLocation = "Chest Freezer", StockQuantity = 8, StockItemNum = "222222222222", StockDateTime = DateTime.Now.AddDays(-1) },
-            new StockObject { StockID = 9, StockName = "Chris", StockItemName = "F", StockLocation = "Chest Freezer", StockQuantity = 7, StockItemNum = "666666666666", StockDateTime = DateTime.Now.AddDays(-4) },
-            new StockObject { StockID = 10, StockName = "Kyle", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 13, StockItemNum = "333333333333", StockDateTime = DateTime.Now.AddDays(-8) },
-            new StockObject { StockID = 11, StockName = "", StockItemName = "", StockLocation = "", StockQuantity = 0, StockItemNum = "", StockDateTime = DateTime.MinValue }
+            new StockObject { StockID = 0, StockName = "Chris", StockItemName = "A", StockLocation = "Fridge", StockQuantity = 3, StockItemNum = 111111111111, StockDateTime = DateTime.Now.AddDays(-4) },
+            new StockObject { StockID = 1, StockName = "Brady", StockItemName = "A", StockLocation = "Fridge", StockQuantity = 2, StockItemNum = 111111111111, StockDateTime = DateTime.Now.AddDays(-2) },
+            new StockObject { StockID = 2, StockName = "Parker", StockItemName = "A", StockLocation = "Fridge", StockQuantity = 10, StockItemNum = 111111111111, StockDateTime = DateTime.Now.AddDays(-1) },
+            new StockObject { StockID = 3, StockName = "Parker", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 40, StockItemNum = 333333333333, StockDateTime = DateTime.Now.AddDays(-7) },
+            new StockObject { StockID = 4, StockName = "Parker", StockItemName = "F", StockLocation = "Fridge Freezer", StockQuantity = 4, StockItemNum = 666666666666, StockDateTime = DateTime.Now.AddDays(-4) },
+            new StockObject { StockID = 5, StockName = "Parker", StockItemName = "B", StockLocation = "Chest Freezer", StockQuantity = 6, StockItemNum = 222222222222, StockDateTime = DateTime.Now.AddDays(-4) },
+            new StockObject { StockID = 6, StockName = "Brady", StockItemName = "D", StockLocation = "Cabinet", StockQuantity = 2, StockItemNum = 444444444444, StockDateTime = DateTime.Now.AddDays(-4) },
+            new StockObject { StockID = 7, StockName = "Chris", StockItemName = "E", StockLocation = "Fridge", StockQuantity = 2, StockItemNum = 555555555555, StockDateTime = DateTime.Now.AddDays(-3) },
+            new StockObject { StockID = 8, StockName = "Chris", StockItemName = "B", StockLocation = "Chest Freezer", StockQuantity = 8, StockItemNum = 222222222222, StockDateTime = DateTime.Now.AddDays(-1) },
+            new StockObject { StockID = 9, StockName = "Chris", StockItemName = "F", StockLocation = "Chest Freezer", StockQuantity = 7, StockItemNum = 666666666666, StockDateTime = DateTime.Now.AddDays(-4) },
+            new StockObject { StockID = 10, StockName = "Kyle", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 13, StockItemNum = 333333333333, StockDateTime = DateTime.Now.AddDays(-8) },
+            new StockObject { StockID = 11, StockName = "", StockItemName = "", StockLocation = "", StockQuantity = 0, StockItemNum = 0, StockDateTime = DateTime.MinValue }
         };
     }
 }

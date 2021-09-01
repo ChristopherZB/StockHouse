@@ -15,5 +15,9 @@ namespace StockHouse.Database
         public DbSet<NameObject> Names { get; set; }
         public DbSet<StockObject> Stocks { get; set; }
 
+        public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
+        {
+        }
+
     }
 }
