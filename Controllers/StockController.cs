@@ -42,18 +42,18 @@ namespace StockHouse.Controllers
         }
 
         
-        public async Task<List<StockObject>> Delete(int stockid)// delete StockObjects from database; params: stockid "stock ID"
+        public async Task Delete(int stockid)// delete StockObjects from database; params: stockid "stock ID"
         {
             var stock = await context.Stocks.FirstOrDefaultAsync(x => x.StockID == stockid);
             if (stock == null)
             {
-                return null;
+                return ;
             }
             else
             {
                 context.Remove(stock);
                 await context.SaveChangesAsync();
-                return null;
+                return ;
             }
 
         }

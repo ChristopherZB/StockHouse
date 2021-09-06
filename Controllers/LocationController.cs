@@ -42,18 +42,18 @@ namespace StockHouse.Controllers
         }
 
        
-        public async Task<List<LocationObject>> Delete(int locid)// delete LocationObjects from database; params: locid "location ID"
+        public async Task Delete(int locid)// delete LocationObjects from database; params: locid "location ID"
         {
             var location = await context.Locations.FirstOrDefaultAsync(x => x.LocationID == locid);
             if (location == null)
             {
-                return null;
+                return ;
             }
             else
             {
                 context.Remove(location);
                 await context.SaveChangesAsync();
-                return null;
+                return ;
 
         }
 

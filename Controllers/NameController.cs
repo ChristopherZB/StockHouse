@@ -42,18 +42,18 @@ namespace StockHouse.Controllers
         }
 
         
-        public async Task<List<NameObject>> Delete(int nameid)// delete NameObjects from database; params: nameid "name ID"
+        public async Task Delete(int nameid)// delete NameObjects from database; params: nameid "name ID"
         {
             var name = await context.Names.FirstOrDefaultAsync(x => x.NameID == nameid);
             if (name == null)
             {
-                return null;
+                return ;
             }
             else
             {
                 context.Remove(name);
                 await context.SaveChangesAsync();
-                return null;
+                return ;
             }
 
         }
