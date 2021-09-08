@@ -18,56 +18,47 @@ namespace StockHouse.Controllers
             this.context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<ItemObject>>> Get()//get list of Item Objects
+        
+        public async Task<List<ItemObject>> Get()//get list of Item Objects
         {
             return await context.Items.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ItemObject>> Get(int itemid)//get item object through ItemID; returns ItemObject; params: itemid "item ID"
+       
+        public async Task<ItemObject> Get(int itemid)//get item object through ItemID; returns ItemObject; params: itemid "item ID"
         {
             var item = await context.Items.FirstOrDefaultAsync(x => x.ItemID == itemid);
-            if (item == null) { return NotFound(); }
+            if (item == null) { return null; }
             return item;
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult<int>> Add(ItemObject itm)//add ItemObject to database; returns ItemObject.ItemID; params: itm "item object"
+        
+        public async Task<int> Add(ItemObject itm)//add ItemObject to database; returns ItemObject.ItemID; params: itm "item object"
         {
             context.Add(itm);
             await context.SaveChangesAsync();
             return itm.ItemID;
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int itmid)// delete ItemObjects from database; params: itmid "item ID"
+       
+        public async Task Delete(int itmid)// delete ItemObjects from database; params: itmid "item ID"
         {
             var item = await context.Items.FirstOrDefaultAsync(x => x.ItemID == itmid);
             if (item == null)
             {
-                return NoContent();
+                return ;
             }
             else
             {
                 context.Remove(item);
                 await context.SaveChangesAsync();
-                return NoContent();
+                return ;
             }
 
         }
 
-        private ActionResult NoContent() //error handler for non-object return methods
-        {
-            throw new NotImplementedException();
-        }
-
-        private ActionResult<ItemObject> NotFound()//error handler for object return methods
-        {
-            throw new NotImplementedException();
-        }
-
+        
 
     }
 }
