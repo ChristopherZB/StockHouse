@@ -1,0 +1,22 @@
+﻿@page "/location"
+@inject LocationController locationController
+
+<LocationQuickAdd @bind-LocationObj="toBeAdded" Adding="Add" />
+<Table TableName="Names" T="LocationObject" Data="locationObjects" />
+
+@code {
+    List<LocationObject> locationObjects = new List<LocationObject>();
+    LocationObject toBeAdded;
+
+    protected async override Task OnInitializedAsync()
+    {
+        locationObjects = await locationController.Get();
+    }
+
+    async Task Add()
+    {
+        await locationController.Add(toBeAdded);
+        locationObjects = await locationController.Get();
+        StateHasChanged();
+    }
+}

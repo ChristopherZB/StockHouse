@@ -47,14 +47,14 @@ namespace StockHouse.Controllers
             var location = await context.Locations.FirstOrDefaultAsync(x => x.LocationID == locid);
             if (location == null)
             {
-                return ;
+                return;
             }
             else
             {
                 context.Remove(location);
                 await context.SaveChangesAsync();
-                return ;
-
+                return;
+            }
         }
 
     }

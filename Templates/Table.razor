@@ -42,7 +42,7 @@
     protected override void OnInitialized()
     {
         PropertyInfo[] fieldinfo = typeof(T).GetProperties();
-        Console.WriteLine(fieldinfo.Length.ToString());
+
         foreach (var field in fieldinfo)
         {
             object[] hTMLAttributes = field.GetCustomAttributes(typeof(DisplayOnTable), false);

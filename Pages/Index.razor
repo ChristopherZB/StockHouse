@@ -1,62 +1,13 @@
 ﻿@page "/"
-@using StockHouse.Helpers
-@inject TestingData TestingData
-@inject StockHouse.Database.MainDbContext context 
+@inject StockController stockController
 
-<h1>Hello, world!</h1>
-<h3>@TestInt @TestInt1 @TestInt2 @TestString @TestString1</h3>
-
-@if (name != null)
-{
-    <h3>name.Name</h3>
-}
-
-<FormBase>
-    <IntField Label="Test Integer" @bind-Value="@TestInt" />
-    <IntField Label="Test Integer 2" @bind-Value="@TestInt1" />
-    <IntField Label="Test Integer 3" @bind-Value="@TestInt2" />
-    <StringField Label="String Test" @bind-Value="@TestString" />
-    <StringField Label="String Test 1" @bind-Value="@TestString1" />
-</FormBase>
-
-@*<Table TableName="Test Table" T="TestObject" Data="Test" />*@
-
-<ObjectField Label="Name" T="NameObject" Options="TestingData.NameObjects" Value="name" DisplayMethod="DisplayName" />
-
-<Table TableName="Test" T="NameObject" Data="testing" />
-<Table TableName="Inventory" T="StockObject" Data="TestingData.StockObjects" />
+<Table TableName="In Stock" T="StockObject" Data="stockObjects" />
 
 @code {
-
     List<StockObject> stockObjects = new List<StockObject>();
-    List<TestObject> Test = new List<TestObject>();
-    NameObject name;
-
-    List<NameObject> testing = new List<NameObject>();
-
-    int TestInt { get; set; }
-    int TestInt1 { get; set; }
-    int TestInt2 { get; set; }
-
-    string TestString { get; set; }
-    string TestString1 { get; set; }
-
-    string DisplayName(NameObject obj)
+    
+    protected async override Task OnInitializedAsync()
     {
-        return obj.Name;
-    }
-
-    protected override void OnInitialized()
-    {
-        TestInt = 10;
-        TestInt1 = 1;
-        TestInt2 = 100;
-
-        for (int i = 0; i < 10; i++)
-        {
-            Test.Add(new TestObject { AnotherTest = $"Is Even: {i % 2 == 0}", TestInt = i, TestName = $"i = {i}, 2i = {2 * i}" });
-        }
-
-        testing = context.Names.ToList();
+        stockObjects = await stockController.Get();
     }
 }

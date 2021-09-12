@@ -1,0 +1,22 @@
+﻿@page "/name"
+@inject NameController nameController
+
+<NameQuickAdd @bind-NameObj="toBeAdded" Adding="Add" />
+<Table TableName="Names" T="NameObject" Data="nameObjects" />
+
+@code {
+    List<NameObject> nameObjects = new List<NameObject>();
+    NameObject toBeAdded;
+
+    protected async override Task OnInitializedAsync()
+    {
+        nameObjects = await nameController.Get();
+    }
+
+    async Task Add()
+    {
+        await nameController.Add(toBeAdded);
+        nameObjects = await nameController.Get();
+        StateHasChanged();
+    }
+}

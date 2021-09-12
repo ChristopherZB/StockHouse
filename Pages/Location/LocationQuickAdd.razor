@@ -1,0 +1,30 @@
+﻿<QuickAdd Add="Add" Reset="Reset" @bind-Adding="adding" AddDescription="Location">
+    <StringField Label="Location" @bind-Value="LocationObj.Location" />
+</QuickAdd>
+
+@code {
+    [Parameter]
+    public LocationObject LocationObj { get; set; }
+    [Parameter]
+    public EventCallback<LocationObject> LocationObjChanged { get; set; }
+    [Parameter]
+    public EventCallback Adding { get; set; }
+
+    bool adding = false;
+
+    async Task Add()
+    {
+        if (LocationObject.LocationValidation(LocationObj))
+        {
+            adding = false;
+            await LocationObjChanged.InvokeAsync(LocationObj);
+            await Adding.InvokeAsync();
+        }
+    }
+
+    void Reset()
+    {
+        LocationObj = new LocationObject();
+        LocationObjChanged.InvokeAsync(LocationObj);
+    }
+}

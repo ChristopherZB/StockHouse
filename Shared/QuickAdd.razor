@@ -1,0 +1,45 @@
+﻿@inject ItemController itemController
+
+<div style="display: flex; flex-direction: row;">
+    @if (Adding)
+    {
+        @ChildContent
+        <button @onclick="@Add">Add</button>
+        <button @onclick="Cancel">Cancel</button>
+    }
+    else
+    {
+        <button @onclick="StartAdding">Add @AddDescription</button>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public EventCallback Add { get; set; }
+    [Parameter]
+    public EventCallback Reset { get; set; }
+    [Parameter]
+    public bool Adding { get; set; }
+    [Parameter]
+    public EventCallback<bool> AddingChanged { get; set; }
+    [Parameter]
+    public string AddDescription { get; set; }
+
+    async Task StartAdding()
+    {
+        await Reset.InvokeAsync();
+        Adding = true;
+        await AddingChanged.InvokeAsync(Adding);
+        StateHasChanged();
+    }
+
+    async Task Cancel()
+    {
+        Reset.InvokeAsync();
+        Adding = false;
+        await AddingChanged.InvokeAsync(Adding);
+        StateHasChanged();
+    }
+}

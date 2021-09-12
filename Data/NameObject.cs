@@ -14,5 +14,14 @@ namespace StockHouse.Data
         [DisplayOnTable]
         public string Name { get; set; }
 
+        public static bool NameValidation(NameObject obj)
+        {
+            return NameNameValidation(obj);
+        }
+
+        public static bool NameNameValidation(NameObject obj)
+        {
+            return !string.IsNullOrWhiteSpace(obj.Name);
+        }
     }
 }

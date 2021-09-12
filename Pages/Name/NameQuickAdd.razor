@@ -1,0 +1,30 @@
+﻿<QuickAdd Add="Add" Reset="Reset" @bind-Adding="adding" AddDescription="Name">
+    <StringField Label="Name" @bind-Value="NameObj.Name" />
+</QuickAdd>
+
+@code {
+    [Parameter]
+    public NameObject NameObj { get; set; }
+    [Parameter]
+    public EventCallback<NameObject> NameObjChanged { get; set; }
+    [Parameter]
+    public EventCallback Adding { get; set; }
+
+    bool adding = false;
+
+    async Task Add()
+    {
+        if (NameObject.NameValidation(NameObj))
+        {
+            adding = false;
+            await NameObjChanged.InvokeAsync(NameObj);
+            await Adding.InvokeAsync();
+        }
+    }
+
+    void Reset()
+    {
+        NameObj = new NameObject();
+        NameObjChanged.InvokeAsync(NameObj);
+    }
+}

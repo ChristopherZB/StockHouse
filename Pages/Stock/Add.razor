@@ -1,0 +1,46 @@
+﻿@page "/stock/add"
+@inject StockController stockController
+@inject NameController nameController
+@inject ItemController itemController
+@inject LocationController locationController
+
+<h3>Add</h3>
+
+<h3>@stockObj.StockName</h3>
+
+<FormBase>
+    @* StockName, StockItemNum, StockItemName, StockLocation, StockQuantity *@
+    <ObjectField Label="Name" T="string" Options="names.Select(x => x.Name).ToList()" DisplayMethod="DisplayName" Value="stockObj.StockName" />
+    <FloatField Label="Item Number" @bind-Value="stockObj.StockItemNum" />
+    <ObjectField Label="Item Name" T="string" Options="items.Select(x => x.ItemName).ToList()" DisplayMethod="DisplayName" Value="stockObj.StockItemName" />
+    <ObjectField Label="Item Location" T="string" Options="locations.Select(x => x.Location).ToList()" DisplayMethod="DisplayName" Value="stockObj.StockLocation" />
+    <IntField Label="Quantity" @bind-Value="stockObj.StockQuantity" />
+</FormBase>
+
+<button @onclick="SaveStock">Save</button>
+
+@code {
+    StockObject stockObj = new StockObject();
+    List<NameObject> names = new List<NameObject>();
+    List<ItemObject> items = new List<ItemObject>();
+    List<LocationObject> locations = new List<LocationObject>();
+
+    string DisplayName(string obj)
+    {
+        return obj;
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        names = await nameController.Get();
+        items = await itemController.Get();
+        locations = await locationController.Get();
+    }
+
+    async Task SaveStock()
+    {
+        //stockObj = new StockObject { StockName = "Kyle", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 13, StockItemNum = 333333333333, StockDateTime = DateTime.Now };
+        //await stockController.Add(stockObj);
+    }
+
+}

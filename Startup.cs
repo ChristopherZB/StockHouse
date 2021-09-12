@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StockHouse.Controllers;
 using StockHouse.Data;
 using StockHouse.Database;
 using StockHouse.Helpers;
@@ -30,6 +31,11 @@ namespace StockHouse
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<TestingData>();
+
+            services.AddScoped<ItemController>();
+            services.AddScoped<LocationController>();
+            services.AddScoped<NameController>();
+            services.AddScoped<StockController>();
 
             services.AddDbContext<MainDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("MainConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("MainConnection")))

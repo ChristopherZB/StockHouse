@@ -1,0 +1,22 @@
+﻿@page "/item"
+@inject ItemController itemController
+
+<ItemQuickAdd @bind-ItemObj="toBeAdded" Adding="Add" />
+<Table TableName="Items" T="ItemObject" Data="itemObjects" />
+
+@code {
+    List<ItemObject> itemObjects = new List<ItemObject>();
+    ItemObject toBeAdded;
+
+    protected async override Task OnInitializedAsync()
+    {
+        itemObjects = await itemController.Get();
+    }
+
+    async Task Add()
+    {
+        await itemController.Add(toBeAdded);
+        itemObjects = await itemController.Get();
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,31 @@
+﻿<QuickAdd Add="Add" Reset="Reset" @bind-Adding="adding" AddDescription="Item">
+    <StringField Label="Item Name" @bind-Value="ItemObj.ItemName" />
+    <FloatField Label="Item Number" @bind-Value="ItemObj.ItemNumber" />
+</QuickAdd>
+
+@code {
+    [Parameter]
+    public ItemObject ItemObj { get; set; }
+    [Parameter]
+    public EventCallback<ItemObject> ItemObjChanged { get; set; }
+    [Parameter]
+    public EventCallback Adding { get; set; }
+
+    bool adding = false;
+
+    async Task Add()
+    {
+        if (ItemObject.ItemValidation(ItemObj))
+        {
+            adding = false;
+            await ItemObjChanged.InvokeAsync(ItemObj);
+            await Adding.InvokeAsync();
+        }
+    }
+
+    void Reset()
+    {
+        ItemObj = new ItemObject();
+        ItemObjChanged.InvokeAsync(ItemObj);
+    }
+}
