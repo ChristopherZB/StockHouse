@@ -3,18 +3,31 @@
 @inject NameController nameController
 @inject ItemController itemController
 @inject LocationController locationController
+@inject NavigationManager nav
 
 <h3>Add</h3>
 
-<h3>@stockObj.StockName</h3>
+<h3>
+    @stockObj.NameID
+
+    @if (stockObj.Name != null)
+            {
+                <div>@stockObj.Name.Name</div>
+                <div>@stockObj.StockName</div>
+            }
+</h3>
 
 <FormBase>
     @* StockName, StockItemNum, StockItemName, StockLocation, StockQuantity *@
-    <ObjectField Label="Name" T="string" Options="names.Select(x => x.Name).ToList()" DisplayMethod="DisplayName" Value="stockObj.StockName" />
+    <ObjectField Label="Name" T="string" Options="names.Select(x => x.Name).ToList()" DisplayMethod="DisplayName" @bind-Value="stockObj.StockName" />
     <FloatField Label="Item Number" @bind-Value="stockObj.StockItemNum" />
-    <ObjectField Label="Item Name" T="string" Options="items.Select(x => x.ItemName).ToList()" DisplayMethod="DisplayName" Value="stockObj.StockItemName" />
-    <ObjectField Label="Item Location" T="string" Options="locations.Select(x => x.Location).ToList()" DisplayMethod="DisplayName" Value="stockObj.StockLocation" />
+    <ObjectField Label="Item Name" T="string" Options="items.Select(x => x.ItemName).ToList()" DisplayMethod="DisplayName" @bind-Value="stockObj.StockItemName" />
+    <ObjectField Label="Item Location" T="string" Options="locations.Select(x => x.Location).ToList()" DisplayMethod="DisplayName" @bind-Value="stockObj.StockLocation" />
     <IntField Label="Quantity" @bind-Value="stockObj.StockQuantity" />
+    @*<ObjectField Label="Name" T="NameObject" Options="names" DisplayMethod="DisplayName" @bind-Value="stockObj.Name" />
+    <ObjectField Label="Item Name" T="ItemObject" Options="items" DisplayMethod="DisplayName" @bind-Value="stockObj.Item" />
+    <ObjectField Label="Item Location" T="LocationObject" Options="locations" DisplayMethod="DisplayName" @bind-Value="stockObj.Location" />
+    <IntField Label="Quantity" @bind-Value="stockObj.StockQuantity" />*@
 </FormBase>
 
 <button @onclick="SaveStock">Save</button>
@@ -30,6 +43,19 @@
         return obj;
     }
 
+    string DisplayName(NameObject obj)
+    {
+        return obj.Name;
+    }
+    string DisplayName(ItemObject obj)
+    {
+        return obj.ItemName;
+    }
+    string DisplayName(LocationObject obj)
+    {
+        return obj.Location;
+    }
+
     protected async override Task OnInitializedAsync()
     {
         names = await nameController.Get();
@@ -41,6 +67,7 @@
     {
         //stockObj = new StockObject { StockName = "Kyle", StockItemName = "C", StockLocation = "Cabinet", StockQuantity = 13, StockItemNum = 333333333333, StockDateTime = DateTime.Now };
         //await stockController.Add(stockObj);
+        nav.NavigateTo("");
     }
 
 }
